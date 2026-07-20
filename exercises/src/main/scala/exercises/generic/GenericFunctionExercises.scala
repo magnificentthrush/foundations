@@ -64,7 +64,7 @@ object GenericFunctionExercises {
 
   // 1f. Can you implement a method on `Pair` similar to `zipWith`, but that combines 3
   // Pairs instead of 2? If yes, can you implement this method using `zipWith`?
-  // Note: Libraries often call this method `map3` and `zipWith` is often called `map2`
+  // Note: Libraries often call this method `map3` and `zipWith` is often called `map2` hello
 
   ////////////////////////////
   // Exercise 2: Predicate
