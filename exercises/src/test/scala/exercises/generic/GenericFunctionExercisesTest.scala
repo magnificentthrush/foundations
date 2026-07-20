@@ -18,11 +18,18 @@ class GenericFunctionExercisesTest extends AnyFunSuite with ScalaCheckDrivenProp
 
   test("Pair swap") {}
 
-  test("Pair map") {}
+  test("Pair map") {
+    assert(Pair("John","Doe").map(_.length) == Pair(4,3))
+  }
 
   test("Pair decoded") {}
 
-  test("Pair zipWith") {}
+  test("Pair zipWith") {
+    val replicate : (Int, String) => String =
+      (n, value) => List.fill(n)(value).mkString(" ")
+    assert(Pair(0, 2).zipWith(Pair(3, 4))((x, y) => x + y) == Pair(3, 6))
+    assert(Pair(1,3).zipWith(Pair("Hello","World"))(replicate) == Pair("Hello", "World World World"))
+  }
 
   test("Pair productNames") {}
 
