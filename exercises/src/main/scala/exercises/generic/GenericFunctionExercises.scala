@@ -1,8 +1,8 @@
 package exercises.generic
 
+import java.lang
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-
 import scala.util.{Failure, Success, Try}
 
 object GenericFunctionExercises {
@@ -30,7 +30,7 @@ object GenericFunctionExercises {
     //         Pair(2, 3).zipWith(Pair("Hello ", "World "))(replicate) == Pair("Hello Hello ", "World World World ")
     // Bonus: Why did we separate the arguments of `zipWith` into two set of parentheses?
     def zipWith[Other, To](other: Pair[Other])(combine: (A, Other) => To): Pair[To] =
-      new Pair(combine(first,other.first),combine(second,other.second))
+      new Pair(combine(this.first,other.first),combine(this.second,other.second))
   }
 
   // 1d. Use the Pair API to decode the content of `secret`.
@@ -42,7 +42,10 @@ object GenericFunctionExercises {
       first = List(103, 110, 105, 109, 109, 97, 114, 103, 111, 114, 80),
       second = List(108, 97, 110, 111, 105, 116, 99, 110, 117, 70)
     )
-  lazy val decoded: Pair[String] = ???
+  val decoded: Pair[String] = {
+//    secret.map(listOfBytes => new String(listOfBytes.toArray)).map(_.reverse).swap
+    secret.map(l => l.map(_.toChar).mkString).map(_.reverse).swap
+  }
 
   // 1e. Use the Pair API to combine `productNames` and `productPrices` into `products`
   // such as products == Pair(Product("Coffee", 2.5), Product("Plane ticket", 329.99))
