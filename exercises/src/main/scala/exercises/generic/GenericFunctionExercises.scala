@@ -68,9 +68,9 @@ object GenericFunctionExercises {
 
   ////////////////////////////
   // Exercise 2: Predicate
-  ////////////////////////////
+  ////////////////////////// //
 
-  val isPositive: Predicate[Int] =
+  val isPositive =
     Predicate((number: Int) => number >= 0)
 
   val isEven: Predicate[Int] =
@@ -90,7 +90,7 @@ object GenericFunctionExercises {
     //         (isEven && isPositive)(-4) == false
     //         (isEven && isPositive)(-7) == false
     def &&(other: Predicate[A]): Predicate[A] =
-      ???
+      Predicate(value => this.eval(value) && other.eval(value))
 
     // 2b. Implement `||` that combines two predicates using logical or
     // such as (isEven || isPositive)(12) == true
